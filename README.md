@@ -114,4 +114,82 @@ Youtube: https://youtube.com/playlist?list=PLlrxD0HtieHjHCQ0JB_RrhbQp_9ccJztr&si
         # Register your models here.
         admin.site.register(models.Cruise)
         admin.site.register(models.Destination)
+
+13. FUNCIONES BASADAS EN VISTAS
+
+    - Estas funciones las crearemos en el archivo en la carpeta de nuestra aplicación llamado views.py
+    - Estas funciones corresponderan a cada una de las vistas que queremos renderizar y que asociaremos a un archivo plantilla html posteriormente para enviarles las variables del contexto con las cuales queremos trabajar
+    - Por ejemplo crearemos dos vistas principales la de la pagina index y about en el archivo views.py de nuestra aplicación
+
+        from django.shortcuts import render
+
+        # Create your views here.
+        def index(request):
+            return render(request, 'index.html')
+
+        def about(request):
+            return render(request, 'about.html')
+
+    - Despues crearemos las correspondientes plantillas html:
+        - index.html y about.html
+
+14. IMPLEMENTANDO LA LOGICA DE LAS RUTAS
+    - Creamos un archivo llamado urls.py en la carpeta de nuestra aplicación (ya lo habiamos hecho previamente)
+    - En este archivo definiremos las urlpatterns:
+
+        from django.urls import path
+        from . import views
+
+        urlpatterns = [
+            path('', views.index, name='index'),
+            path('about', views.about, name='about'),
+        ]
+    - Ahora necesitaremos registrarlo en nuestro proyecto en el archivo urls.py principal con la funcion include:
+
+        urlpatterns = [
+        path('', include('rgardencloud.urls')),
+        path('admin/', admin.site.urls),
+        ]   
+    - De esta forma le indicamos al archivo principal de urls que estamos estructurando el proyecto en pequeños archivos por aplicación
+
+15. PLANTILLAS HTML Y HERENCIA
+
+    - Django permite crear un sistema de plantillas para evitar tener que repetir la escritura de un mismo codigo en diferentes archivos
+    - Cada uno de estos archivos se puede heredar de uno o diferentes archivos que ocntengan la información general
+    - Despues cada uno de los archivos especificos pueden ir sobreescribiendo la informaicón de estas plantillas base segun convenga
+    - Para hacer esto creamos un archivo llamado base.html el cual contenera la información y layout general de la estructura de nuestra apliación o pagina web
+    - Dentro del archiov base.html vemos que tenemos un {% funcion %}
+    - Esto le indica a djnago que dentro del archivo html tiene que ejecutar un función
+    - En el archivo base de html creamos cloques los cuales podremos sobreescribir posteriormente con las plantillas que hereden de esta. Por ejemplo el título de la página:
+        <title>
+            {% block title %}
+            ReleCloud - Expand your horizons
+            {% endblock %}
+        </title>
+    - Después en las plantillas hijas: index.html y about.html sobreescribire este bloque
+    - index.html:
+
+        {% extends 'base.html' %}
+
+        {% block title %}
+        ReleCloud - Expand your horizons
+        {% endblock %}
+
+    - about.html:
+
+        {% extends 'base.html' %}
+
+        {% block title %}
+        ReleCloud - About
+        {% endblock %}
+
+    - Dentro de las plantillas también indicaremos la ruta de las urls segun hemos definido con la función {% url %}:
+
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+
+
+
+
+
+
     
