@@ -187,6 +187,24 @@ Youtube: https://youtube.com/playlist?list=PLlrxD0HtieHjHCQ0JB_RrhbQp_9ccJztr&si
 
         <a class="nav-link" href="{% url 'about' %}">About</a>
 
+16. MOSTRAR DATOS DINAMICOS
+
+    - Para mostrar en nuestras plantillas las instancias de los objetos/modelos que hemos creado deberemos crear las funciones en el archivo views.py igual que hemos hecho para index y contact
+    - Abrimos el archivo views.py de nuestra aplicación y creamos la vista destinations
+    - Enviamos la variable de contexto al renderizar la plantilla llamada destinations con todos los objetos de nuestro modelo
+    - Creamos la plantill destinations.html en base a la plantilla base.html
+    - Creamos un bucle for mediante funciones de django {% for  in %}{% end for %}
+    - Dentro de este bucle creamos una lista no ordenada con cada una de las instancias que contiene nuestro modelo Destination
+    - Añadimos la url en el archivo urls
+    - referenciamos esta url en el menu de navegación de nuestro archivo base.html para pdoer acceder a esta vista
+
+17. MOSTRAR VISTAS GENERALES DE NUESTROS MODELOS
+
+    - Django nos permite crear las tipicas vistas: Detalle, Crear, Eliminar, Editar.
+    - Esto se realiza mediante las clases bsadas en vistas de modelos
+    - 
+
+
 
 
 
