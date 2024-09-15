@@ -7,6 +7,8 @@ ReleCloud - Destinations
 {% block content %}
 <h1>{{destination}}</h1>
 <p>{{destination.description}}</p>
+<a href="{% url "destination_update" destination.pk %}">Edit destination</a><br>
+<a href="{% url "destination_delete" destination.pk %}">Delete destination</a>
 <p>You can explore {{destination}} on the following cruises:</p>
 <ul class="list-group">
     {% for cruise in destination.cruises.all %}

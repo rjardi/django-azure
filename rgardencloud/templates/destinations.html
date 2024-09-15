@@ -7,11 +7,15 @@ ReleCloud - Destinations
 {% block content %}
 <h1>Rgarden Destinations</h1>
 <ul class="">
+    <li>
+        <a href="{% url "destination_create" %}">Add new destination</a>
+    </li>
     {% for destination in destinations %}
         <li class="list-group-item">
             <a href="{% url "destination_detail" destination.pk %}">{{ destination.name }}</a>
         </li>
     {% endfor %}
+
 </ul>
 
 

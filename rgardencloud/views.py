@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from . import models
 from django.views import generic
 
@@ -20,6 +21,22 @@ class DestinationDetailView(generic.DetailView):
     template_name='destination_detail.html'
     model=models.Destination
     context_object_name='destination'
+
+class DestinationUpdateView(generic.UpdateView):
+    template_name='destination_form.html'
+    model=models.Destination
+    fields=['name','description']
+
+class DestinationCreateView(generic.CreateView):
+    template_name='destination_form.html'
+    model=models.Destination
+    fields=['name','description']
+
+class DestinationDeleteView(generic.DeleteView):
+    template_name='destination_confirm_delete.html'
+    model=models.Destination
+    success_url=reverse_lazy('destinations')
+
 
 class CruiseDetailView(generic.DetailView):
     template_name='cruise_detail.html'

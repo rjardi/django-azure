@@ -202,7 +202,11 @@ Youtube: https://youtube.com/playlist?list=PLlrxD0HtieHjHCQ0JB_RrhbQp_9ccJztr&si
 
     - Django nos permite crear las tipicas vistas: Detalle, Crear, Eliminar, Editar.
     - Esto se realiza mediante las clases bsadas en vistas de modelos
-    - 
+    - Creamos en el archivo views las vistas que heredaran del paquete generic de django 
+    - Creamos las plantillas html asociadas a cada vista: destination_form.html (la usaremos para update y create), destination_confirm_delete.html.
+    - Después asociaremos estas vistas a cada una de las urls
+    - Las urls update, delete i detail tendran como parametro el id del modelo en la url
+    - Sobreescribiremos en la clase del modelo Destination el metodo get_absolute_url para que nos devuelva siempre la vista detalle de la isntancia en cuestión al hacer la petición 
 
 
 
