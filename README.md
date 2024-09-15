@@ -208,6 +208,31 @@ Youtube: https://youtube.com/playlist?list=PLlrxD0HtieHjHCQ0JB_RrhbQp_9ccJztr&si
     - Las urls update, delete i detail tendran como parametro el id del modelo en la url
     - Sobreescribiremos en la clase del modelo Destination el metodo get_absolute_url para que nos devuelva siempre la vista detalle de la isntancia en cuestión al hacer la petición 
 
+18. VISTAS GENERICAS CON DJANGO-CRISPY-FORMS
+
+    - django-crispy forms es una libreria que se utiliza para dar un mejor formato a nuestros formularios ya que por defecto los formularios via la funcion {{form.as_p}} se renderizan de forma un poco desorganizada
+    - Para utilizarlo instalamos el paquete en nuestro entorno virtual:
+        pip install django-crispy-forms
+    - Instalamos el paquete de estilo deaseado por ejemplo el crispy-bootstrap4
+        pip install crispy-bootstrap4
+    - Añadimos las aplicaciones en settings.py según: https://django-crispy-forms.readthedocs.io/en/latest/install.html:
+        INSTALLED_APPS = [
+            '.......',
+            'crispy_forms',
+            'crispy_bootstrap4'
+        ]
+    - Añadimos la variable CRISPY_TEMPLATE_PACK en settings.py:
+        CRISPY_TEMPLATE_PACK = 'bootstrap4'
+        
+    - Añadimos en la plantilla html del formulario el load y el filtro de crispy:
+
+        {% load crispy_forms_tags %}
+
+        {{ form|crispy }}
+
+
+
+
 
 
 
